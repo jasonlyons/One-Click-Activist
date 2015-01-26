@@ -2,10 +2,11 @@
 function setupTable(tx) {
 	app_log("setupTable");
 	tx.executeSql("CREATE TABLE IF NOT EXISTS login(id INTEGER PRIMARY KEY,username,login_key)");
+	tx.executeSql("INSERT INTO login (username,login_key) values(?,?)",['jclyo1','123mykey']);
 }
 
 function dbErrorHandler(err) {
-	alert("DB Error: " + err.message + "\nCode = " + err.code);
+	app.showAlert("DB Error: " + err.message + "\nCode = " + err.code);
 	app_log(err);
 }
 
@@ -19,8 +20,8 @@ tx.executeSql("SELECT * FROM login",[],isLoggedInQuerySuccess,dbErrorHandler);},
 
 function isLoggedInQuerySuccess(tx,results) {
 	if (results.rows.length == 0) {
-		alert("there is no login record");	
+		app.showAlert("there is no login record");	
 	} else {
-		alert(results.rows.item(0).login_key);	
+		app.showAlert(results.rows.item(0).login_key);	
 	}
 }

@@ -40,6 +40,7 @@ function isLoggedInQuerySuccess(tx,results) {
 			},               
 			success: function (result) {
 				app.showAlert(result);
+				app_log(result);
 			},
 			error: function (request,error) {
 				console.log(request);

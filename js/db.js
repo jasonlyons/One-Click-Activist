@@ -1,7 +1,7 @@
 // JavaScript Document
 function setupTable(tx) {
 	app_log("setupTable");
-	tx.executeSql("DROP TABLE login");
+	tx.executeSql("DROP TABLE IF EXISTS login");
 	tx.executeSql("CREATE TABLE IF NOT EXISTS login(id INTEGER PRIMARY KEY,email,login_key)");
 	tx.executeSql("INSERT INTO login (email,login_key) values(?,?)",['jason@workwithiws.com','123mykey']);
 }

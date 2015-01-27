@@ -4,13 +4,11 @@ $(document).on('pageinit', '#login', function(){
 		if($('#login-email').val().length > 0 && $('#login-password').val().length > 0){
 			// Send data to server through the Ajax call
 			// action is functionality we want to call and outputJSON is our data
-				var url = 'http://oneclick.iwssites.com/login.php';   
+				var url = 'http://oneclick.iwssites.com/login.php?e=' + $('#login-email').val() + '&p=' + $('#login-password').val();   
 				
 				app_log(url);
 				
 				$.ajax({url: url,
-					data: {e : $('#login-email').val(), p : $('#login-password').val()},
-					type: 'post',                  
 					async: 'true',
 					dataType: 'json',
 					beforeSend: function() {
@@ -26,6 +24,8 @@ $(document).on('pageinit', '#login', function(){
 						
 						if(result.status == 'success') {
 							$.mobile.changePage("#actions");                        
+						} else {
+							app.showAlert('Please Try again', 'Failure');	
 						}
 						
 					},

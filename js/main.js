@@ -4,11 +4,7 @@ document.addEventListener("deviceready",onDeviceReady,false);
 function onDeviceReady() {
 	app_log("onDeviceReady");
 	dbShell = window.openDatabase("OneClick", 2, "OneClick", 1000000);
-	try {
-		dbShell.transaction(setupTable,dbErrorHandler,isLoggedIn);	
-	} catch (e) {
-		app_log(e);	
-	}
+	dbShell.transaction(setupTable,dbErrorHandler,isLoggedIn);	
 }
 
 function app_log(something) { 

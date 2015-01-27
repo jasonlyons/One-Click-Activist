@@ -30,16 +30,21 @@ $(document).on('pageinit', '#create-account', function(){
 							app_log("key");
 							app_log(result);
 							
+							/*
 							try {
 								dbShell = window.openDatabase("OneClick", 2, "OneClick", 1000000);
 							} catch (e) {
 								app_log(e);	
 							}
+							*/
+							
+							
+							
 							
 							try {
 								dbShell.transaction(function(tx) {
 										tx.executeSql("DELETE FROM login",[]);
-										tx.executeSql("INSERT INTO login (email,login_key) values(?,?)",[$('#login-email').val(),result.login_key]);
+										tx.executeSql("INSERT INTO login (email,login_key) values(?,?)",[$('#create-account-email').val(),result.login_key]);
 									}, dbErrorHandler);
 							} catch (e) {
 								app_log(e);	

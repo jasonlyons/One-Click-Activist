@@ -37,9 +37,8 @@ $(document).on('pageinit', '#create-account', function(){
 								app_log(e);	
 							}
 							*/
-							
-							
-							
+							alert(result.login_key);
+											
 							
 							try {
 								dbShell.transaction(function(tx) {
@@ -49,9 +48,9 @@ $(document).on('pageinit', '#create-account', function(){
 							} catch (e) {
 								app_log(e);	
 							}
-															
+													
 								
-								$.mobile.changePage("#actions");                        
+							$.mobile.changePage("#actions");                        
 
 						},
 						error: function (request,error) {

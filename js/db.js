@@ -36,7 +36,7 @@ function isLoggedInQuerySuccess(tx,results) {
 		app.showAlert("there is no login record");	
 	} else {
 		app_log("isLoggedInQuerySuccess > 1");
-		app.showAlert("isLoggedInQuerySuccess");
+		//app.showAlert("isLoggedInQuerySuccess");
 		
 		try {
 			//app.showAlert(results.rows.item(0).login_key);	
@@ -55,7 +55,7 @@ function isLoggedInQuerySuccess(tx,results) {
 					$.mobile.loading('hide'); // This will hide ajax spinner
 				},               
 				success: function (result) {
-					app.showAlert(result);
+					//app.showAlert(result);
 					app_log(result);
 				},
 				error: function (request,error) {

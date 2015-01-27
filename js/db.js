@@ -57,10 +57,11 @@ function isLoggedInQuerySuccess(tx,results) {
 				success: function (result) {
 					//app.showAlert(result);
 					app_log(result);
+					$.mobile.changePage('#actions');
 				},
 				error: function (request,error) {
-					console.log(request);
-					console.log(error);
+					app_log(request);
+					app_log(error);
 					alert('Network error has occurred please try again!');
 				}
 			});
@@ -68,7 +69,7 @@ function isLoggedInQuerySuccess(tx,results) {
 			app_log(e);	
 		}
 		
-		$.mobile.changePage('#login');
+		
 		
 	}
 }

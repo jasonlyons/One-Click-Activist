@@ -32,6 +32,7 @@ function isLoggedInQuerySuccess(tx,results) {
 		app_log("isLoggedInQuerySuccess > 1");
 		//app.showAlert("isLoggedInQuerySuccess");
 		
+
 			//app.showAlert(results.rows.item(0).login_key);	
 			var url = 'http://oneclick.iwssites.com/check_login.php?e=' + results.rows.item(0).email + '&k=' + results.rows.item(0).login_key;   
 			
@@ -61,5 +62,8 @@ function isLoggedInQuerySuccess(tx,results) {
 					alert('Network error has occurred please try again!');
 				}
 			});
+		
+		
+		
 	}
 }

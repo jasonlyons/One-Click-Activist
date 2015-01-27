@@ -9,9 +9,10 @@ $(document).on('pageinit', '#login', function(){
 				app_log(url);
 				
 				try {
-					$.ajax({url: url,
-						async: 'true',
-						dataType: 'jsonp',
+					$.ajax({
+						url: url,
+						dataType: "jsonp",
+						async: true,
 						beforeSend: function() {
 							// This callback function will trigger before data is sent
 							$.mobile.loading('show', {theme:"a", text:"Please wait...", textonly:false, textVisible: true}); // This will show ajax spinner
@@ -19,8 +20,9 @@ $(document).on('pageinit', '#login', function(){
 						complete: function() {
 							// This callback function will trigger on data sent/received complete
 							$.mobile.loading('hide'); // This will hide ajax spinner
-						},
+						},               
 						success: function (result) {
+							//app.showAlert(result);
 							app_log(result);
 							
 							if(result.status == 'success') {
@@ -28,15 +30,15 @@ $(document).on('pageinit', '#login', function(){
 							} else {
 								app.showAlert('Please Try again', 'Failure');	
 							}
-							
 						},
 						error: function (request,error) {
-							// This callback function will trigger on unsuccessful action               
 							app_log(request);
 							app_log(error);
 							alert('Network error has occurred please try again!');
 						}
-					});                  
+					});
+
+
 				} catch (e) {
 					app_log(e);	
 				}

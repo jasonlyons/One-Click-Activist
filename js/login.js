@@ -24,7 +24,6 @@ $(document).on('pageinit', '#login', function(){
 						success: function (result) {
 							//app.showAlert(result);
 							app_log(result);
-							
 							if(result.status == 'success') {
 								try {
 									dbShell.transaction(function(tx) {

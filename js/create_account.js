@@ -37,8 +37,6 @@ $(document).on('pageinit', '#create-account', function(){
 								app_log(e);	
 							}
 							*/
-							alert(result.login_key);
-											
 							
 							try {
 								dbShell.transaction(function(tx) {

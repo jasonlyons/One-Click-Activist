@@ -26,9 +26,22 @@ $(document).on('pageinit', '#login', function(){
 							app_log(result);
 							
 							if(result.status == 'success') {
+								try {
+									dbShell.transaction(function(tx) {
+										tx.executeSql("DELETE FROM login",[]);
+										tx.executeSql("INSERT INTO login (email,login_key) values(?,?)",[$('#login-email').val(),result.login_key]);
+									}, dbErrorHandler);
+								} catch (e) {
+									app_log(e);	
+								}								
+								
 								$.mobile.changePage("#actions");                        
 							} else {
-								app.showAlert('Please Try again', 'Failure');	
+								
+								app.showAlert('Please Try again', 'Failure');
+								$('#login-email').val('');
+								$('#login-password').val('');
+									
 							}
 						},
 						error: function (request,error) {

@@ -10,7 +10,7 @@ $(document).on('pageinit', '#login', function(){
 				
 				$.ajax({url: url,
 					async: 'true',
-					dataType: 'json',
+					dataType: 'jsonp',
 					beforeSend: function() {
 						// This callback function will trigger before data is sent
 						$.mobile.showPageLoadingMsg(true); // This will show ajax spinner

@@ -1,9 +1,13 @@
 // JavaScript Document
 function setupTable(tx) {
-	app_log("setupTable");
-	tx.executeSql("DROP TABLE IF EXISTS login");
-	tx.executeSql("CREATE TABLE IF NOT EXISTS login(id INTEGER PRIMARY KEY,email,login_key)");
-	tx.executeSql("INSERT INTO login (email,login_key) values(?,?)",['jason@workwithiws.com','123mykey']);
+	try {
+		app_log("setupTable");
+		tx.executeSql("DROP TABLE IF EXISTS login");
+		tx.executeSql("CREATE TABLE IF NOT EXISTS login(id INTEGER PRIMARY KEY,email,login_key)");
+		tx.executeSql("INSERT INTO login (email,login_key) values(?,?)",['jason@workwithiws.com','123mykey']);
+	} catch (e) {
+		app_log(e);	
+	}
 }
 
 function dbErrorHandler(err) {
@@ -13,9 +17,12 @@ function dbErrorHandler(err) {
 
 function isLoggedIn() {
 	app_log("success");
-	
+	try {
 	dbShell.transaction(function(tx) {
 tx.executeSql("SELECT * FROM login",[],isLoggedInQuerySuccess,dbErrorHandler);}, dbErrorHandler);
+	} catch (e) {
+		app_log(e);	
+	}
 
 }
 
@@ -23,6 +30,8 @@ function isLoggedInQuerySuccess(tx,results) {
 	if (results.rows.length == 0) {
 		app.showAlert("there is no login record");	
 	} else {
+		app.showAlert("isLoggedInQuerySuccess");
+		
 		//app.showAlert(results.rows.item(0).login_key);	
 		var url = 'http://oneclick.iwssites.com/check_login.php?e=' + results.rows.item(0).email + '&k=' + results.rows.item(0).login_key;   
 		

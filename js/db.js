@@ -27,9 +27,14 @@ tx.executeSql("SELECT * FROM login",[],isLoggedInQuerySuccess,dbErrorHandler);},
 }
 
 function isLoggedInQuerySuccess(tx,results) {
+	app_log("isLoggedInQuerySuccess");
+	app_log(results);
+	
 	if (results.rows.length == 0) {
+		app_log("there is no login record");
 		app.showAlert("there is no login record");	
 	} else {
+		app_log("isLoggedInQuerySuccess");
 		app.showAlert("isLoggedInQuerySuccess");
 		
 		//app.showAlert(results.rows.item(0).login_key);	

@@ -13,11 +13,11 @@ $(document).on('pageinit', '#login', function(){
 					dataType: 'jsonp',
 					beforeSend: function() {
 						// This callback function will trigger before data is sent
-						$.mobile.showPageLoadingMsg(true); // This will show ajax spinner
+						$.mobile.loading('show', {theme:"a", text:"Please wait...", textonly:false, textVisible: true}); // This will show ajax spinner
 					},
 					complete: function() {
 						// This callback function will trigger on data sent/received complete
-						$.mobile.hidePageLoadingMsg(); // This will hide ajax spinner
+						$.mobile.loading('hide'); // This will hide ajax spinner
 					},
 					success: function (result) {
 						app_log(result);

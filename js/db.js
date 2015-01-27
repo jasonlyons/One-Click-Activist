@@ -57,7 +57,10 @@ function isLoggedInQuerySuccess(tx,results) {
 				success: function (result) {
 					//app.showAlert(result);
 					app_log(result);
-					$.mobile.changePage('#actions');
+					if (result)
+						$.mobile.changePage('#actions');
+					else
+						$.mobile.changePage('#not-logged-in');
 				},
 				error: function (request,error) {
 					app_log(request);

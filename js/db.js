@@ -1,6 +1,6 @@
 // JavaScript Document
 function setupTable(tx) {
-		tx.executeSql("DROP TABLE IF EXISTS login");
+		//tx.executeSql("DROP TABLE IF EXISTS login");
 		tx.executeSql("CREATE TABLE IF NOT EXISTS login(id INTEGER PRIMARY KEY,email,login_key)");
 }
 

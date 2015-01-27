@@ -24,10 +24,6 @@ function isLoggedInQuerySuccess(tx,results) {
 	app_log(results);
 	app_log(results.rows.length);
 	
-	alert(results.rows.item(0).login_key);
-	alert(results.rows.item(0).email);
-	
-	
 	if (results.rows.length == 0) {
 		app_log("there is no login record");
 		app.showAlert("there is no login record");	

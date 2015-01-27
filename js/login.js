@@ -8,34 +8,38 @@ $(document).on('pageinit', '#login', function(){
 				
 				app_log(url);
 				
-				$.ajax({url: url,
-					async: 'true',
-					dataType: 'jsonp',
-					beforeSend: function() {
-						// This callback function will trigger before data is sent
-						$.mobile.loading('show', {theme:"a", text:"Please wait...", textonly:false, textVisible: true}); // This will show ajax spinner
-					},
-					complete: function() {
-						// This callback function will trigger on data sent/received complete
-						$.mobile.loading('hide'); // This will hide ajax spinner
-					},
-					success: function (result) {
-						app_log(result);
-						
-						if(result.status == 'success') {
-							$.mobile.changePage("#actions");                        
-						} else {
-							app.showAlert('Please Try again', 'Failure');	
+				try {
+					$.ajax({url: url,
+						async: 'true',
+						dataType: 'jsonp',
+						beforeSend: function() {
+							// This callback function will trigger before data is sent
+							$.mobile.loading('show', {theme:"a", text:"Please wait...", textonly:false, textVisible: true}); // This will show ajax spinner
+						},
+						complete: function() {
+							// This callback function will trigger on data sent/received complete
+							$.mobile.loading('hide'); // This will hide ajax spinner
+						},
+						success: function (result) {
+							app_log(result);
+							
+							if(result.status == 'success') {
+								$.mobile.changePage("#actions");                        
+							} else {
+								app.showAlert('Please Try again', 'Failure');	
+							}
+							
+						},
+						error: function (request,error) {
+							// This callback function will trigger on unsuccessful action               
+							app_log(request);
+							app_log(error);
+							alert('Network error has occurred please try again!');
 						}
-						
-					},
-					error: function (request,error) {
-						// This callback function will trigger on unsuccessful action               
-						app_log(request);
-						app_log(error);
-						alert('Network error has occurred please try again!');
-					}
-				});                  
+					});                  
+				} catch (e) {
+					app_log(e);	
+				}
 		} else {
 			alert('Please fill all necessary fields');
 		}          

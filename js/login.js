@@ -24,9 +24,9 @@ $(document).on('pageinit', '#login', function(){
 						
 						if(result.status == 'success') {
 							$.mobile.changePage("#actions");                        
-						} else {
-							//$.mobile.changePage("#login");                        
 						}
+						
+						
 						
 					},
 					error: function (request,error) {

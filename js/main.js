@@ -1,6 +1,7 @@
 // JavaScript Document
 document.addEventListener("deviceready",onDeviceReady,false);
 
+
 function onDeviceReady() {
 	app_log("onDeviceReady");
 	dbShell = window.openDatabase("OneClick", 2, "OneClick", 1000000);

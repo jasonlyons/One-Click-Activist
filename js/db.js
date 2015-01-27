@@ -29,40 +29,46 @@ tx.executeSql("SELECT * FROM login",[],isLoggedInQuerySuccess,dbErrorHandler);},
 function isLoggedInQuerySuccess(tx,results) {
 	app_log("isLoggedInQuerySuccess");
 	app_log(results);
+	app_log(results.rows.length);
 	
 	if (results.rows.length == 0) {
 		app_log("there is no login record");
 		app.showAlert("there is no login record");	
 	} else {
-		app_log("isLoggedInQuerySuccess");
+		app_log("isLoggedInQuerySuccess > 1");
 		app.showAlert("isLoggedInQuerySuccess");
 		
-		//app.showAlert(results.rows.item(0).login_key);	
-		var url = 'http://oneclick.iwssites.com/check_login.php?e=' + results.rows.item(0).email + '&k=' + results.rows.item(0).login_key;   
+		try {
+			//app.showAlert(results.rows.item(0).login_key);	
+			var url = 'http://oneclick.iwssites.com/check_login.php?e=' + results.rows.item(0).email + '&k=' + results.rows.item(0).login_key;   
+			
+			$.ajax({
+				url: url,
+				dataType: "jsonp",
+				async: true,
+				beforeSend: function() {
+					// This callback function will trigger before data is sent
+					$.mobile.loading('show', {theme:"a", text:"Please wait...", textonly:false, textVisible: true}); // This will show ajax spinner
+				},
+				complete: function() {
+					// This callback function will trigger on data sent/received complete
+					$.mobile.loading('hide'); // This will hide ajax spinner
+				},               
+				success: function (result) {
+					app.showAlert(result);
+					app_log(result);
+				},
+				error: function (request,error) {
+					console.log(request);
+					console.log(error);
+					alert('Network error has occurred please try again!');
+				}
+			});
+		} catch (e) {
+			app_log(e);	
+		}
 		
-		$.ajax({
-			url: url,
-			dataType: "jsonp",
-			async: true,
-			beforeSend: function() {
-				// This callback function will trigger before data is sent
-				$.mobile.loading('show', {theme:"a", text:"Please wait...", textonly:false, textVisible: true}); // This will show ajax spinner
-			},
-			complete: function() {
-				// This callback function will trigger on data sent/received complete
-				$.mobile.loading('hide'); // This will hide ajax spinner
-			},               
-			success: function (result) {
-				app.showAlert(result);
-				app_log(result);
-			},
-			error: function (request,error) {
-				console.log(request);
-				console.log(error);
-				alert('Network error has occurred please try again!');
-			}
-		});
-		
+		$.mobile.changePage('#login');
 		
 	}
 }

@@ -1,10 +1,16 @@
 // JavaScript Document
-document.addEventListener("deviceready",onDeviceReady,false);
+if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
+	document.addEventListener("deviceready",onDeviceReady,false);
+} else {
+	$(document).ready(function() {
+		onDeviceReady();
+	});
+}
 
 function onDeviceReady() {
 	app_log("onDeviceReady");
-	dbShell = window.openDatabase("OneClick", 2, "OneClick", 1000000);
-	dbShell.transaction(setupTable,dbErrorHandler,isLoggedIn);	
+	alert('onDevice Ready');
+	isLoggedIn();
 }
 
 function app_log(something) { 

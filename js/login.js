@@ -36,14 +36,8 @@ $(document).on('pageinit', '#login', function(){
 
 							
 							if(result.status == 'success') {
-								try {
-									dbShell.transaction(function(tx) {
-										tx.executeSql("DELETE FROM login",[]);
-										tx.executeSql("INSERT INTO login (email,login_key) values(?,?)",[$('#login-email').val(),result.login_key]);
-									}, dbErrorHandler);
-								} catch (e) {
-									app_log(e);	
-								}								
+								window.localStorage.setItem('email',$('#login-email').val());
+								window.localStorage.setItem('login_key',result.login_key);
 								
 								user.firstname = result.firstname;
 								user.lastname = result.lastname;
@@ -55,7 +49,7 @@ $(document).on('pageinit', '#login', function(){
 								
 								$.mobile.changePage("#actions");                        
 							} else {
-								
+								window.localStorage.clear();
 								app.showAlert('Please Try again', 'Failure');
 								$('#login-email').val('');
 								$('#login-password').val('');

@@ -37,17 +37,9 @@ $(document).on('pageinit', '#create-account', function(){
 								app_log(e);	
 							}
 							*/
+							window.localStorage.setItem('email',email);
+							window.localStorage.setItem('login_key',login_key);
 							
-							try {
-								dbShell.transaction(function(tx) {
-										tx.executeSql("DELETE FROM login",[]);
-										tx.executeSql("INSERT INTO login (email,login_key) values(?,?)",[$('#create-account-email').val(),result.login_key]);
-									}, dbErrorHandler);
-							} catch (e) {
-								app_log(e);	
-							}
-													
-								
 							$.mobile.changePage("#actions");                        
 
 						},

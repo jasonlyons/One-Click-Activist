@@ -3,3 +3,6 @@
 .ui-header .ui-title {margin: 0 10%;}
 /* #login {position:absolute;top:50%;margin-top:-150px;} */
 #login h1 {padding:20px 0;}
+
+.action {padding: .5em;margin-bottom:1em; background-color:#fff;}
+[data-role=content] {background-color:#f9f9f9;}

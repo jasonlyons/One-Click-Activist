@@ -22,8 +22,8 @@
 	<!--
 	<gap:platform name="android" />
 	-->
-	<preference name="DisallowOverscroll" value="true" />
-	<preference name="UIWebViewBounce" value="false" />
+	
+	<preference name="webviewbounce" value="false" />
 	
 	<gap:plugin name="org.apache.cordova.file" />
 	<gap:plugin name="org.apache.cordova.file-transfer" />

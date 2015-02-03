@@ -92,7 +92,18 @@
 <div data-role="page" id="actions">
 	<div data-role="header" data-position="fixed">
 		<h1>One-Click Activist</h1>
-        <a href="#settings" id="btn-settings" class="ui-btn ui-icon-gear ui-btn-icon-notext ui-corner-all ui-btn-right">No text</a>
+        
+        <a href="#popupMenu" data-rel="popup" data-transition="pop" class="ui-btn ui-icon-gear ui-btn-icon-notext ui-corner-all ui-btn-right">No Text</a>
+        <div data-role="popup" id="popupMenu" data-theme="b">
+                <ul data-role="listview" data-inset="true" style="min-width:210px;">
+                    <li data-role="list-divider">Choose an action</li>
+                    <li><a href="#settings">Edit Profile</a></li>
+                    <li><a href="#login" id="logout">Logout</a></li>
+                </ul>
+        </div>
+        
+        
+        <!-- <a href="#settings" id="btn-settings" class="ui-btn ui-icon-gear ui-btn-icon-notext ui-corner-all ui-btn-right">No text</a> -->
 	</div><!-- /header -->
 
 	<div data-role="content" class="ui-content">

@@ -1,4 +1,14 @@
 // JavaScript Document
+var user = {
+	firstname : '',
+	lastname : '',
+	password : '',
+	address : '',
+	city : '',
+	state : '',
+	zipcode : ''	
+};
+
 $(document).on('pageinit', '#login', function(){ 
 	$(document).on('click', '#login-submit', function() { // catch the form's submit event
 		if($('#login-email').val().length > 0 && $('#login-password').val().length > 0){
@@ -23,7 +33,8 @@ $(document).on('pageinit', '#login', function(){
 						},               
 						success: function (result) {
 							//app.showAlert(result);
-							app_log(result);
+
+							
 							if(result.status == 'success') {
 								try {
 									dbShell.transaction(function(tx) {
@@ -33,6 +44,14 @@ $(document).on('pageinit', '#login', function(){
 								} catch (e) {
 									app_log(e);	
 								}								
+								
+								user.firstname = result.firstname;
+								user.lastname = result.lastname;
+								user.email = result.email;
+								user.address = result.address;
+								user.city = result.city;
+								user.state = result.state;
+								user.zipcode = result.zipcode;
 								
 								$.mobile.changePage("#actions");                        
 							} else {

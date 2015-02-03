@@ -49,11 +49,20 @@ function isLoggedInQuerySuccess(tx,results) {
 				},               
 				success: function (result) {
 					//app.showAlert(result);
+					user.firstname = result.firstname;
+					user.lastname = result.lastname;
+					user.email = result.email;
+					user.address = result.address;
+					user.city = result.city;
+					user.state = result.state;
+					user.zipcode = result.zipcode;
+					
 					app_log(result);
-					if (result)
+					if (result) {
 						$.mobile.changePage('#actions');
-					else
+					} else {
 						$.mobile.changePage('#login');
+					}
 				},
 				error: function (request,error) {
 					app_log(request);

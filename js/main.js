@@ -9,7 +9,6 @@ if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
 
 function onDeviceReady() {
 	app_log("onDeviceReady");
-	alert('onDevice Ready');
 	isLoggedIn();
 }
 

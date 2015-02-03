@@ -4,7 +4,7 @@ function dbErrorHandler(err) {
 }
 
 function isLoggedIn() {
-	alert('is logged in');
+
 	email = window.localStorage.getItem("email");
 	login_key = window.localStorage.getItem("login_key");
 

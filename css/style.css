@@ -6,3 +6,14 @@
 
 .action {padding: .5em;margin-bottom:1em; background-color:#fff;}
 [data-role=content] {background-color:#f9f9f9;}
+
+.ui-icon-map-marker:after {
+	background-position: .503em .25em;	
+}
+
+.left {float:left;}
+
+.right {float:right;}
+.right .ui-btn {display:block;}
+
+.cl {clear:both;height:0;}

@@ -19,6 +19,9 @@
 	
 	<gap:platform name="ios" />
 	
+	<gap:plugin name="com.pushwoosh.plugins.pushwoosh" version="3.4.5" source="plugins.cordova.io" />
+	
+	
 	<!--
 	<gap:platform name="android" />
 	-->
@@ -46,6 +49,6 @@
 	
 	<access origin="debug.phonegap.com" subdomains="true" />
 	<access origin="*" />
-	
+	<access origin="*.pushwoosh.com"/>
 	
 </widget>

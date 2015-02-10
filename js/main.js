@@ -8,7 +8,9 @@ if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
 }
 
 function onDeviceReady() {
-	initPushwoosh();
+	if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
+		initPushwoosh();
+	}
 	
 	app_log("onDeviceReady");
 	isLoggedIn();

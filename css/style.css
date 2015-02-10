@@ -17,3 +17,5 @@
 .right .ui-btn {display:block;}
 
 .cl {clear:both;height:0;}
+
+[data-role=content] img {width:100%;}

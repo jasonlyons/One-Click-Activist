@@ -9,6 +9,7 @@ var user = {
 	zipcode : ''	
 };
 
+
 $(document).on('pageinit', '#login', function(){ 
 	$(document).on('click', '#login-submit', function() { // catch the form's submit event
 		if($('#login-email').val().length > 0 && $('#login-password').val().length > 0){

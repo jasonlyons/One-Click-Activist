@@ -22,7 +22,7 @@ $(document).on('pageinit', '#actions', function(e, data){
 			actions = result;
 			var markup,	numItems = result.length;
 	
-			markup = '<ul data-role="listview" data-inset="true" id="actions-list">';
+			markup = '<ul data-role="listview"id="actions-list">';
 	
 			// Generate a list item for each item in the category
 			// and add it to our markup.

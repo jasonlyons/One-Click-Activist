@@ -55,12 +55,34 @@ function initPushwoosh() {
 								 //app.showAlert(notification.aps.alert,"Alert!");
 								 pushNotification.setApplicationIconBadgeNumber(0);
 								 
-								active_action_id = notification.u.action_id;
-											
-								$('#action-detail .ui-content').html("description here");
-								$('#action-detail .take-action').html("action btn text");
 								
-								$.mobile.changePage('#action-detail');
+								var url = 'http://oneclick.iwssites.com/actions.php';   
+				
+								$.ajax({
+									  url: url,
+									  dataType: "jsonp",
+									  async: true,
+									  beforeSend: function() {
+										  // This callback function will trigger before data is sent
+										  $.mobile.loading('show', {theme:"a", text:"Please wait...", textonly:false, textVisible: true}); // This will show ajax spinner
+									  },
+									  complete: function() {
+										  // This callback function will trigger on data sent/received complete
+										  $.mobile.loading('hide'); // This will hide ajax spinner
+									  },               
+									  success: function (result) {
+										actions = result;
+										loadActionAlert(notification.u.action_id);
+									  },
+									  error: function (request,error) {
+										  app_log(request);
+										  app_log(error);
+										  alert('Network error has occurred please try again!');
+									  }
+								});	
+								
+										
+								
                             });
  
     //initialize the plugin
@@ -82,6 +104,7 @@ function initPushwoosh() {
     pushNotification.setApplicationIconBadgeNumber(0);
 }
 	
+/*	
 document.addEventListener('push-notification', function(event) {
              var notification = event.notification;
              app_log(notification);
@@ -100,7 +123,8 @@ document.addEventListener('push-notification', function(event) {
 			$.mobile.changePage('#action-detail');
 			
 			 
-});	
+})
+*/;	
 
 $(document).on('click', '#logout', function() { 
 	window.localStorage.clear();

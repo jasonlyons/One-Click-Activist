@@ -53,8 +53,14 @@ $(document).on('pagebeforeshow', '#actions', function(e, data){
 
 
 $(document).on('click', '#actions-list a', function() { 
-	var ID = $(this).attr('data-id'), description;
+	var ID = $(this).attr('data-id');
 
+	loadActionAlert(ID);
+});
+
+function loadActionAlert(ID) {
+	var description, action_button;
+	
 	for ( var i = 0; i < actions.length; i++ ) {
 		if (actions[i].ID == ID) {
 			description = actions[i].description;
@@ -66,8 +72,9 @@ $(document).on('click', '#actions-list a', function() {
 	$('#action-detail .take-action').html(action_button);
 	active_action_id = ID;
 	
-	$.mobile.changePage('#action-detail');
-});
+	$.mobile.changePage('#action-detail');	
+}
+
 
 $(document).on('click', '.take-action', function() { // catch the form's submit event
 	// Send data to server through the Ajax call

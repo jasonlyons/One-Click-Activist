@@ -54,7 +54,7 @@ function initPushwoosh() {
 								 
 								 action_id = notification.u.action_id;
 								 
-								 //app.showAlert(notification.aps.alert,"Alert!");
+								 app.showAlert(notification.aps.alert,"Alert!");
 								 pushNotification.setApplicationIconBadgeNumber(0);
 								 
 								

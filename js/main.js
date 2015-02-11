@@ -78,9 +78,16 @@ function initPushwoosh() {
 document.addEventListener('push-notification', function(event) {
              var notification = event.notification;
              app_log(notification);
+			 app_log(notification.u.action_id,"ID");		 
+			 
+			 
 			 
 			 alert(notification.aps.alert);
              pushNotification.setApplicationIconBadgeNumber(0);
+			 
+			 active_action_id = notification.u.action_id;
+			$.mobile.changePage('#action-detail');
+			 
 });	
 
 $(document).on('click', '#logout', function() { 

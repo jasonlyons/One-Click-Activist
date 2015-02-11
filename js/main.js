@@ -12,6 +12,8 @@ function onDeviceReady() {
 		initPushwoosh();
 	}
 	
+	user = {};
+	
 	app_log("onDeviceReady");
 	isLoggedIn();
 }
@@ -78,3 +80,7 @@ document.addEventListener('push-notification', function(event) {
              alert(notification.aps.alert);
              pushNotification.setApplicationIconBadgeNumber(0);
 });	
+
+$(document).on('click', '#logout', function() { 
+	window.localStorage.clear();
+});

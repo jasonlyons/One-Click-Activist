@@ -8,7 +8,7 @@ function isLoggedIn() {
 	email = window.localStorage.getItem("email");
 	login_key = window.localStorage.getItem("login_key");
 
-	app_log(email);
+	app_log("IsLoggedIn");
 
 	 if (email != '' && login_key != '') {
 		var url = 'http://oneclick.iwssites.com/check_login.php?e=' + email + '&k=' + login_key;   
@@ -27,19 +27,22 @@ function isLoggedIn() {
 			},               
 			success: function (result) {
 				//app.showAlert(result);
-				user.firstname = result.firstname;
-				user.lastname = result.lastname;
-				user.email = result.email;
-				user.address = result.address;
-				user.city = result.city;
-				user.state = result.state;
-				user.zipcode = result.zipcode;
+				
+				app_log("isLoggedIn -> check_login.php success");
 				
 				app_log(result);
-				if (result) {
-					window.localStorage.clear();
+				if( result.status == 'success') {
+					user.firstname = result.firstname;
+					user.lastname = result.lastname;
+					user.email = result.email;
+					user.address = result.address;
+					user.city = result.city;
+					user.state = result.state;
+					user.zipcode = result.zipcode;
+					
 					$.mobile.changePage('#actions');
 				} else {
+					window.localStorage.clear();
 					$.mobile.changePage('#login');
 				}
 			},

@@ -8,7 +8,6 @@ $(document).on('pageinit', '#create-account', function(){
 				
 				var str = $('#create-account-form').serialize();
 				
-				app_log(str);
 				
 				try {
 					$.ajax({
@@ -26,9 +25,17 @@ $(document).on('pageinit', '#create-account', function(){
 							$.mobile.loading('hide'); // This will hide ajax spinner
 						},               
 						success: function (result) {
+							app_log("Login Key: " + result.login_key);
+							
 							//app.showAlert(result);
-							app_log("key");
-							app_log(result);
+							
+							user.firstname = $('#create-account-firstname').val();
+							user.lastname = $('#create-account-lastname').val();
+							user.email = $('#create-account-email').val();
+							user.address = $('#create-account-address').val();
+							user.city = $('#create-account-city').val();
+							user.state = $('#create-account-state').val();
+							user.zipcode = $('#create-account-zipcode').val();
 							
 							/*
 							try {
@@ -37,8 +44,8 @@ $(document).on('pageinit', '#create-account', function(){
 								app_log(e);	
 							}
 							*/
-							window.localStorage.setItem('email',email);
-							window.localStorage.setItem('login_key',login_key);
+							window.localStorage.setItem('email',$('#create-account-email').val());
+							window.localStorage.setItem('login_key',result.login_key);
 							
 							$.mobile.changePage("#actions");                        
 

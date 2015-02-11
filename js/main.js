@@ -78,11 +78,11 @@ function initPushwoosh() {
 document.addEventListener('push-notification', function(event) {
              var notification = event.notification;
              app_log(notification);
-			 app_log(notification.u.action_id,"ID");		 
+			 app_log(notification.u.action_id);		 
 			 
 			 
 			 
-			 alert(notification.aps.alert);
+			 app.showAlert(notification.aps.alert,"Alert!");
              pushNotification.setApplicationIconBadgeNumber(0);
 			 
 			 active_action_id = notification.u.action_id;

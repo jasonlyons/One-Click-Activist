@@ -1,6 +1,7 @@
 /* CSS Document */
 .center {margin: 0 auto;text-align:center;}
 .ui-header {padding-top:10px;}
+.ui-header .ui-btn {margin-top:10px;}
 .ui-header .ui-title {margin: 0 10%;}
 /* #login {position:absolute;top:50%;margin-top:-150px;} */
 #login h1 {padding:20px 0;}

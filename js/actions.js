@@ -92,7 +92,7 @@ $(document).on('click', '.take-action', function() { // catch the form's submit 
 		success: function (result) {
 			app_log("Login Key: " + result.login_key);
 			
-			app.showAlert("Success!","Thank you for taking action");
+			app.showAlert("Thank you for taking action","Success!");
 			
 			$.mobile.changePage("#actions");                        
 

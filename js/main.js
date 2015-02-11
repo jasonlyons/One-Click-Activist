@@ -46,14 +46,21 @@ function initPushwoosh() {
  
     //set push notification callback before we initialize the plugin
     document.addEventListener('push-notification', function(event) {
-                                //get the notification payload
                                 var notification = event.notification;
- 
-                                //display alert to the user for example
-                                alert(notification.aps.alert);
-                               
-                                //clear the app badge
-                                pushNotification.setApplicationIconBadgeNumber(0);
+								 app_log(notification);
+								 app_log(notification.u.action_id);		 
+								 
+								app_log("push-notification INSIDE of deviceready"); 
+								 
+								 //app.showAlert(notification.aps.alert,"Alert!");
+								 pushNotification.setApplicationIconBadgeNumber(0);
+								 
+								active_action_id = notification.u.action_id;
+											
+								$('#action-detail .ui-content').html("description here");
+								$('#action-detail .take-action').html("action btn text");
+								
+								$.mobile.changePage('#action-detail');
                             });
  
     //initialize the plugin
@@ -80,17 +87,15 @@ document.addEventListener('push-notification', function(event) {
              app_log(notification);
 			 app_log(notification.u.action_id);		 
 			 
+			app_log("push-notification outside of deviceready"); 
 			 
-			 
-			 app.showAlert(notification.aps.alert,"Alert!");
+			 //app.showAlert(notification.aps.alert,"Alert!");
              pushNotification.setApplicationIconBadgeNumber(0);
 			 
 			active_action_id = notification.u.action_id;
-			$.mobile.changePage('#action-detail');
-			
+						
 			$('#action-detail .ui-content').html("description here");
 			$('#action-detail .take-action').html("action btn text");
-			active_action_id = ID;
 			
 			$.mobile.changePage('#action-detail');
 			

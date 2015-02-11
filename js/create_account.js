@@ -62,7 +62,7 @@ $(document).on('pageinit', '#create-account', function(){
 					app_log(e);	
 				}
 		} else {
-			alert('Please fill all necessary fields');
+			app.showAlert('Please fill all necessary fields','Warning');
 		}          
 		return false; // cancel original event to prevent form submitting
 	});   

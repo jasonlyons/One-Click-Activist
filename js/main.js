@@ -52,6 +52,8 @@ function initPushwoosh() {
 								 
 								app_log("push-notification INSIDE of deviceready"); 
 								 
+								 action_id = notification.u.action_id;
+								 
 								 //app.showAlert(notification.aps.alert,"Alert!");
 								 pushNotification.setApplicationIconBadgeNumber(0);
 								 
@@ -72,7 +74,11 @@ function initPushwoosh() {
 									  },               
 									  success: function (result) {
 										actions = result;
-										loadActionAlert(notification.u.action_id);
+										app_log(actions);
+										app_log(notification.u.action_id);
+										app_log(action_id);
+										
+										loadActionAlert(action_id);
 									  },
 									  error: function (request,error) {
 										  app_log(request);

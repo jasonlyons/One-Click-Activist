@@ -85,8 +85,15 @@ document.addEventListener('push-notification', function(event) {
 			 app.showAlert(notification.aps.alert,"Alert!");
              pushNotification.setApplicationIconBadgeNumber(0);
 			 
-			 active_action_id = notification.u.action_id;
+			active_action_id = notification.u.action_id;
 			$.mobile.changePage('#action-detail');
+			
+			$('#action-detail .ui-content').html("description here");
+			$('#action-detail .take-action').html("action btn text");
+			active_action_id = ID;
+			
+			$.mobile.changePage('#action-detail');
+			
 			 
 });	
 

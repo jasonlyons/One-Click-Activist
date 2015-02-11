@@ -77,7 +77,9 @@ function initPushwoosh() {
 	
 document.addEventListener('push-notification', function(event) {
              var notification = event.notification;
-             alert(notification.aps.alert);
+             app_log(notification);
+			 
+			 alert(notification.aps.alert);
              pushNotification.setApplicationIconBadgeNumber(0);
 });	
 

@@ -19,3 +19,5 @@
 .cl {clear:both;height:0;}
 
 [data-role=content] img {width:100%;}
+
+#settings-state, #create-account-state {text-align: left;}
